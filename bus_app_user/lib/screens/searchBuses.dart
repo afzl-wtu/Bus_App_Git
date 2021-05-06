@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_bus/models/bus_model.dart';
 
-import '../models/busesDetail.dart';
 import './selectSeats.dart';
 
 class SearchBuses extends StatelessWidget {
+  List<BusModel> buses;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +15,7 @@ class SearchBuses extends StatelessWidget {
         backgroundColor: Colors.blue.shade800,
       ),
       body: ListView.builder(
-        itemCount: busDetail.length,
+        itemCount: buses.length,
         itemBuilder: (ctx, i) {
           return Container(
             margin: EdgeInsets.only(left: 10, right: 10, top: 6),
@@ -32,7 +33,7 @@ class SearchBuses extends StatelessWidget {
               },
               child: Row(
                 children: [
-                  Image.asset(busDetail[i].busImage, height: 100),
+                  Image.asset(buses[i].busImage, height: 100),
                   Expanded(child: Container()),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,18 +42,17 @@ class SearchBuses extends StatelessWidget {
                       Container(
                           padding: EdgeInsets.only(bottom: 10),
                           child: Text(
-                            busDetail[i].busname,
+                            buses[i].busname,
                             style: TextStyle(
                                 color: Colors.blue.shade800,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           )),
-                      Text('Bus Number : ${busDetail[i].busNo}'),
-                      Text('Journey Date : ${busDetail[i].journeyDate}'),
-                      Text('From : ${busDetail[i].from}'),
-                      Text('To : ${busDetail[i].to}'),
-                      Text('Time : ${busDetail[i].time}'),
-                      Text('Bus Condition : ${busDetail[i].busCondition}'),
+                      Text('Bus Number : ${buses[i].busNo}'),
+                      Text('From : }'),
+                      Text('To : }'),
+                      Text('Time : '),
+                      Text('Bus Condition : ${buses[i].busCondition}'),
                     ],
                   ),
                   SizedBox(width: 10),
