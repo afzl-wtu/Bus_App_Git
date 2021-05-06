@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fancy_on_boarding/fancy_on_boarding.dart';
@@ -68,26 +71,41 @@ class _OnBoardingState extends State<OnBoarding> {
       ),
     ),
   ];
+  User _currentUser;
+  void initState() {
+    _currentUser = FirebaseAuth.instance.currentUser;
+    if (_currentUser != null)
+      Timer(Duration(seconds: 0), () {
+        dispose();
+        return Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => SelectLogin()));
+      });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [Colors.blue, Colors.indigo])),
-      child: Scaffold(
-        body: FancyOnBoarding(
-            doneButtonText: "Get Started",
-            skipButtonText: "Skip",
-            doneButtonBackgroundColor: Colors.amber.shade900,
-            pageList: pageList,
-            onDoneButtonPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SelectLogin())),
-            onSkipButtonPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SelectLogin()))),
-      ),
-    );
+    return _currentUser != null
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Colors.blue, Colors.indigo])),
+            child: Scaffold(
+              body: FancyOnBoarding(
+                  doneButtonText: "Get Started",
+                  skipButtonText: "Skip",
+                  doneButtonBackgroundColor: Colors.amber.shade900,
+                  pageList: pageList,
+                  onDoneButtonPressed: () => Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => SelectLogin())),
+                  onSkipButtonPressed: () => Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => SelectLogin()))),
+            ),
+          );
   }
 }
