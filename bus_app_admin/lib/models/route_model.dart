@@ -4,5 +4,10 @@ class RouteModel {
   final DateTime fromTime;
   final DateTime toTime;
 
-  RouteModel({this.fromTime, this.toTime, this.from, this.to});
+  RouteModel({
+    this.fromTime,
+    this.toTime,
+    this.from,
+    this.to,
+  });
 }
