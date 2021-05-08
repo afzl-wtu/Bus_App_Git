@@ -3,6 +3,13 @@ class RouteModel {
   final String to;
   final DateTime fromTime;
   final DateTime toTime;
+  final double costPerSeat;
 
-  RouteModel({this.fromTime, this.toTime, this.from, this.to});
+  RouteModel({
+    this.fromTime,
+    this.toTime,
+    this.from,
+    this.to,
+    this.costPerSeat,
+  });
 }

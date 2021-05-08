@@ -1,10 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_bus/models/bus_model.dart';
+import 'package:ticket_bus/models/route_model.dart';
 
 import './selectSeats.dart';
 
 class SearchBuses extends StatelessWidget {
-  List<BusModel> buses;
+  final List<BusModel> buses = List.generate(
+    5,
+    (index) => BusModel(
+      busname: (index + 1).toString(),
+      busNo: 'CF5468',
+      totalseats: 45,
+      busCondition: 'A/C',
+      routes: List.generate(
+        5,
+        (index) => RouteModel(
+          from: index.toString(),
+          to: (index + 5).toString(),
+          fromTime: DateTime.now(),
+          toTime: DateTime.now().add(
+            Duration(days: 5),
+          ),
+          costPerSeat: 200,
+        ),
+      ),
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +54,11 @@ class SearchBuses extends StatelessWidget {
               },
               child: Row(
                 children: [
-                  Image.asset(buses[i].busImage, height: 100),
+                  Icon(
+                    Icons.directions_bus_outlined,
+                    size: 100,
+                    color: Colors.amber,
+                  ),
                   Expanded(child: Container()),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
