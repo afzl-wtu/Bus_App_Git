@@ -135,7 +135,7 @@ class _LoginState extends State<Login> {
                   child: Container(
                     height: 50,
                     width: double.infinity,
-                    margin: EdgeInsets.only(left: 20, right: 20),
+                    margin: EdgeInsets.only(left: 20, right: 20, top: 100),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         border: Border.all(color: Colors.blue.shade800),
@@ -152,46 +152,46 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 50,
-                    width: mediaQuery.size.width * 1 / 1.2,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Or Sign In With',
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 17.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Container(
+                //     height: 50,
+                //     width: mediaQuery.size.width * 1 / 1.2,
+                //     decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(15),
+                //     ),
+                //     child: Center(
+                //       child: Text(
+                //         'Or Sign In With',
+                //         style: TextStyle(
+                //           color: Colors.black54,
+                //           fontSize: 17.0,
+                //           fontWeight: FontWeight.bold,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          ' Google',
-                          style: TextStyle(color: Colors.blue, fontSize: 16),
-                        ),
-                        Text(
-                          ' Facebook',
-                          style: TextStyle(color: Colors.blue, fontSize: 16),
-                        ),
-                        Text(
-                          ' Twitter',
-                          style: TextStyle(color: Colors.blue, fontSize: 16),
-                        )
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //   children: [
+                    //     Text(
+                    //       ' Google',
+                    //       style: TextStyle(color: Colors.blue, fontSize: 16),
+                    //     ),
+                    //     Text(
+                    //       ' Facebook',
+                    //       style: TextStyle(color: Colors.blue, fontSize: 16),
+                    //     ),
+                    //     Text(
+                    //       ' Twitter',
+                    //       style: TextStyle(color: Colors.blue, fontSize: 16),
+                    //     )
+                    //   ],
+                    // ),
                     InkWell(
                       onTap: () {
                         Navigator.pushReplacement(

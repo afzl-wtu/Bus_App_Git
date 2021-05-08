@@ -1,6 +1,6 @@
 import 'package:bus_tick/screen/addBuses.dart';
-import 'package:bus_tick/screen/selectRoute.dart';
-import 'package:bus_tick/screen/sendEmail.dart';
+import 'package:bus_tick/screen/viewBuses.dart';
+import 'package:bus_tick/screen/viewTickets.dart';
 import 'package:flutter/material.dart';
 
 class AdminPanel extends StatelessWidget {
@@ -27,10 +27,10 @@ class AdminPanel extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 150),
+            SizedBox(height: 50),
             buildInkWell('Add Buses', 0, context),
-            buildInkWell('Select Route', 1, context),
-            buildInkWell('Send Email', 2, context),
+            buildInkWell('View Buses', 1, context),
+            buildInkWell('View Tickets', 2, context),
           ],
         ),
       ),
@@ -47,10 +47,10 @@ class AdminPanel extends StatelessWidget {
               return AddBuses();
               break;
             case 1:
-              return SelectRoute();
+              return ViewBuses();
               break;
             case 2:
-              return SendEmail();
+              return ViewTickets();
               break;
 
             default:
@@ -58,21 +58,21 @@ class AdminPanel extends StatelessWidget {
         }));
       },
       child: Container(
-        width: double.infinity,
-        height: 48,
-        margin: EdgeInsets.only(left: 20, top: 10, right: 20, bottom: 10),
+        width: 160,
+        height: 160,
+        margin: EdgeInsets.only(left: 20, right: 20, bottom: 10),
         padding: EdgeInsets.only(left: 10),
         decoration: BoxDecoration(
-          color: Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(7),
+          color: Colors.amber.shade700,
+          borderRadius: BorderRadius.circular(80),
         ),
         child: Center(
           child: Text(
             text,
             style: TextStyle(
-              color: Colors.blue.shade800,
-              fontSize: 22,
-              fontWeight: FontWeight.w400,
+              color: Colors.white,
+              fontSize: 23,
+              fontWeight: FontWeight.w900,
             ),
           ),
         ),

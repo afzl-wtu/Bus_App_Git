@@ -1,3 +1,4 @@
+import 'package:bus_tick/widgets/my_textField.dart';
 import 'package:flutter/material.dart';
 
 class AddBuses extends StatefulWidget {
@@ -6,24 +7,69 @@ class AddBuses extends StatefulWidget {
 }
 
 class _AddBusesState extends State<AddBuses> {
-  String chosenCity;
-  List listofCities = [
-    'Lahore',
-    'Karachi',
-    'Multan',
-    'Sahiwal',
-    'Islamabad',
-    'Sialkot',
-  ];
-  String chosenCity1;
-  List listofCities1 = [
-    'Bahawalnagar',
-    'Karachi',
-    'Multan',
-    'Bahawalpur',
-    'Islamabad',
-    'Sialkot',
-  ];
+  final TextEditingController _fromCityController = TextEditingController();
+  final TextEditingController _fromCityTimeController = TextEditingController();
+  final TextEditingController _toCityController = TextEditingController();
+  final TextEditingController _toCityTimeController = TextEditingController();
+  final TextEditingController _busNameController = TextEditingController();
+  final TextEditingController _busNumberController = TextEditingController();
+  final TextEditingController _busConditionController = TextEditingController();
+  final TextEditingController _costPerSeatController = TextEditingController();
+  final TextEditingController _totalNumberOfSeatController =
+      TextEditingController();
+
+  void bottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              myTextField('From City', _fromCityController),
+              myTextField('Time', _fromCityTimeController),
+              myTextField('To City', _toCityController),
+              myTextField('Time', _toCityTimeController),
+              myTextField('Cost Per Seat', _costPerSeatController),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.amber),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          'Done',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.amber),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          'Add More ',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,126 +93,22 @@ class _AddBusesState extends State<AddBuses> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
-              child: Text(
-                'Travels Name :',
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  decoration: InputDecoration(border: InputBorder.none),
+            myTextField('Bus Name', _busNameController),
+            myTextField('Bus Number', _busNumberController),
+            myTextField('Bus Condition', _busConditionController),
+            myTextField('Total Number Of Seat', _totalNumberOfSeatController),
+            SizedBox(height: 20),
+            Center(
+              child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.amber),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
-              child: Text(
-                'Bus Number :',
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  decoration: InputDecoration(border: InputBorder.none),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
-              child: Text(
-                'From :',
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 20, top: 10, right: 20),
-              padding: EdgeInsets.only(left: 10),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: DropdownButton(
-                hint: Text('Chose City'),
-                underline: SizedBox(),
-                iconSize: 30,
-                isExpanded: true,
-                value: chosenCity,
-                onChanged: (newCity) {
-                  setState(() {
-                    chosenCity = newCity;
-                  });
+                onPressed: () {
+                  bottomSheet(context);
                 },
-                items: listofCities.map((e) {
-                  return DropdownMenuItem(
-                      value: e,
-                      child: Text(
-                        e,
-                      ));
-                }).toList(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
-              child: Text(
-                'To :',
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 20, top: 10, right: 20),
-              padding: EdgeInsets.only(left: 10),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: DropdownButton(
-                hint: Text('Chose City'),
-                underline: SizedBox(),
-                iconSize: 30,
-                isExpanded: true,
-                value: chosenCity1,
-                onChanged: (newCity) {
-                  setState(() {
-                    chosenCity1 = newCity;
-                  });
-                },
-                items: listofCities1.map((e) {
-                  return DropdownMenuItem(
-                      value: e,
-                      child: Text(
-                        e,
-                      ));
-                }).toList(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
-              child: Text(
-                'Bus Condition :',
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  decoration: InputDecoration(border: InputBorder.none),
+                child: Text(
+                  'Add Routes',
+                  style: TextStyle(color: Colors.black),
                 ),
               ),
             ),

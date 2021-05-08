@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SelectRoute extends StatelessWidget {
+class ViewTickets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Select Route'),
+        title: Text('View Tickets'),
         centerTitle: true,
         backgroundColor: Colors.blue.shade800,
       ),

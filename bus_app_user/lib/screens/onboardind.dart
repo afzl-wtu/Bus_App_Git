@@ -21,55 +21,51 @@ class _OnBoardingState extends State<OnBoarding> {
     PageModel(
         color: const Color(0xFF8acee1),
         heroImagePath: 'assets/images/booking.jpeg',
-        title: Text('Book Your Online \n Bus Ticket',
+        title: Text('Book Your Online \nBus Ticket.',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('I am not superstitious,but i am a little stitious.',
+        body: Text('Please Swipe For Next Page.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconImagePath: 'assets/png/key.png'),
+        iconImagePath: 'assets/images/hole.jpg'),
     PageModel(
         color: const Color(0xFF006599),
         heroImagePath: 'assets/images/bus3.png',
-        title: Text('Digital Bus \n Management System',
+        title: Text('Digital Bus \nManagement System',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('I am not superstitious,but i am a little stitious.',
+        body: Text('Again Next For Other Page.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.amber,
               fontSize: 18.0,
             )),
-        iconImagePath: 'assets/png/wallet.png'),
+        iconImagePath: 'assets/images/hole.jpg'),
     PageModel(
-      color: const Color(0xFF5c1f6d),
-      heroImagePath: 'assets/images/bell.png',
-      title: Text('Through \n Notifications Keep \n Yourself Updated',
-          style: TextStyle(
-            fontWeight: FontWeight.w800,
-            color: Colors.white,
-            fontSize: 34.0,
-          )),
-      body: Text('I am not superstitious,but i am a little stitious.',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.amber,
-            fontSize: 18.0,
-          )),
-      icon: Icon(
-        Icons.notification_important,
-        color: const Color(0xFF9B90BC),
-      ),
-    ),
+        color: const Color(0xFF5c1f6d),
+        heroImagePath: 'assets/images/bell.png',
+        title: Text('Through \nNotifications Keep \n Yourself Updated',
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              fontSize: 34.0,
+            )),
+        body: Text('Thank You And Click Get Started.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.amber,
+              fontSize: 18.0,
+            )),
+        iconImagePath: 'assets/images/hole.jpg'),
   ];
   User _currentUser;
   void initState() {
