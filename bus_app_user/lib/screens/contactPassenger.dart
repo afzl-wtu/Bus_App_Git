@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import './payment.dart';
 
 class ContactPassenger extends StatelessWidget {
+  final emailIDControler = TextEditingController();
+  final emailControler = TextEditingController();
+  final phoneNumberControler = TextEditingController();
+  final nameControler = TextEditingController();
+  final ageControler = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +35,7 @@ class ContactPassenger extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: TextField(
+                  controller: emailIDControler,
                   decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),
@@ -49,6 +55,7 @@ class ContactPassenger extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: TextField(
+                  controller: phoneNumberControler,
                   decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),
@@ -74,6 +81,7 @@ class ContactPassenger extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: TextField(
+                  controller: nameControler,
                   decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),
@@ -93,6 +101,7 @@ class ContactPassenger extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: TextField(
+                  controller: ageControler,
                   decoration: InputDecoration(border: InputBorder.none),
                 ),
               ),

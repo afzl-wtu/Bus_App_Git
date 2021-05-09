@@ -10,8 +10,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool checkBoxValue = true;
-  final email = TextEditingController();
-  final password = TextEditingController();
+  final emailControler = TextEditingController();
+  final passwordControler = TextEditingController();
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -47,6 +47,7 @@ class _LoginState extends State<Login> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextField(
+                      controller: emailControler,
                       decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.mail,
@@ -69,6 +70,7 @@ class _LoginState extends State<Login> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextField(
+                      controller: passwordControler,
                       decoration: InputDecoration(
                         suffixIcon: Icon(Icons.lock),
                         prefixIcon: Icon(

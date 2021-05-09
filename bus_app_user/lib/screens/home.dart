@@ -7,6 +7,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final choseSeatControler = TextEditingController();
   String chosenCity;
   List listofCities = [
     'Lahore',
@@ -48,27 +49,10 @@ class _HomeState extends State<Home> {
         children: [
           SizedBox(height: 30),
           Center(
-            child: Text(
-              'Tasadduq',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Travelling Company',
-              style: TextStyle(
-                color: Colors.amber,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+              child:
+                  Image.asset('assets/images/logo Bus App.jpeg', height: 200)),
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 100),
+            padding: const EdgeInsets.only(left: 20, top: 20),
             child: Text(
               'From :',
             ),
@@ -162,6 +146,26 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, top: 20),
+            child: Text(
+              'Chose Seat :',
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(7),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: TextField(
+                controller: choseSeatControler,
+                decoration: InputDecoration(border: InputBorder.none),
+              ),
+            ),
+          ),
           InkWell(
             onTap: () {
               Navigator.of(context).push(
@@ -175,7 +179,7 @@ class _HomeState extends State<Home> {
             child: Container(
               width: double.infinity,
               height: 48,
-              margin: EdgeInsets.only(left: 20, top: 80, right: 20),
+              margin: EdgeInsets.only(left: 20, top: 80, right: 20, bottom: 20),
               padding: EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
                 color: Colors.blue.shade800,

@@ -28,6 +28,7 @@ class ViewBuses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         title: Text('View Buses'),
         centerTitle: true,
@@ -44,28 +45,34 @@ class ViewBuses extends StatelessWidget {
                     .routes
                     .map((e) => Container(
                           margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('From: ${e.from}'),
-                                  Spacer(),
-                                  Text(
-                                      'Time: ${DateFormat('yyyy-MM-dd hh:mm').format(e.fromTime)}'),
+                                  Row(
+                                    children: [
+                                      Text('From: ${e.from}'),
+                                      Spacer(),
+                                      Text(
+                                          'Time: ${DateFormat('yyyy-MM-dd hh:mm').format(e.fromTime)}'),
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      Text('Destination: ${e.to}'),
+                                      Spacer(),
+                                      Text(
+                                          'Time: ${DateFormat('yyyy-MM-dd hh:mm').format(e.toTime)}')
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text('Cost Per Seat: ${e.costPerSeat}'),
                                 ],
                               ),
-                              Row(
-                                children: [
-                                  Text('Destination: ${e.to}'),
-                                  Spacer(),
-                                  Text(
-                                      'Time: ${DateFormat('yyyy-MM-dd hh:mm').format(e.toTime)}')
-                                ],
-                              ),
-                              Text('Cost Per Seat: ${e.costPerSeat}'),
-                              SizedBox(height: 10),
-                            ],
+                            ),
                           ),
                         ))
                     .toList(),

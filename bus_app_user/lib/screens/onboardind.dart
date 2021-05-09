@@ -27,11 +27,11 @@ class _OnBoardingState extends State<OnBoarding> {
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('Please Swipe For Next Page.',
+        body: Text('.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
-              fontSize: 18.0,
+              fontSize: 0,
             )),
         iconImagePath: 'assets/images/hole.jpg'),
     PageModel(
@@ -43,11 +43,11 @@ class _OnBoardingState extends State<OnBoarding> {
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('Again Next For Other Page.',
+        body: Text('.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.amber,
-              fontSize: 18.0,
+              fontSize: 0,
             )),
         iconImagePath: 'assets/images/hole.jpg'),
     PageModel(
@@ -59,11 +59,11 @@ class _OnBoardingState extends State<OnBoarding> {
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('Thank You And Click Get Started.',
+        body: Text('.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.amber,
-              fontSize: 18.0,
+              fontSize: 0,
             )),
         iconImagePath: 'assets/images/hole.jpg'),
   ];
