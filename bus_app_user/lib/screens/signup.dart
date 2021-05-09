@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import './tabscreen.dart';
@@ -175,20 +176,10 @@ class _SignupState extends State<Signup> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      PageRouteBuilder(
-                          transitionDuration: Duration(milliseconds: 400),
-                          transitionsBuilder:
-                              (context, animation, animationTime, child) =>
-                                  ScaleTransition(
-                                    alignment: Alignment.center,
-                                    scale: animation,
-                                    child: child,
-                                  ),
-                          pageBuilder: (context, animation, animationTime) =>
-                              HomeScreen()),
-                    );
+                    FirebaseAuth.instance
+                        .createUserWithEmailAndPassword(
+                            email: email.text, password: password.text)
+                        .then((value) => Navigator.pop(context));
                   },
                   child: Container(
                     height: 50,
