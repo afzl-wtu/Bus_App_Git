@@ -1,103 +1,98 @@
 import 'package:flutter/material.dart';
-
-import './cardInformation.dart';
+import 'package:ticket_bus/screens/ticket.dart';
 
 class Payment extends StatefulWidget {
   @override
   _PaymentState createState() => _PaymentState();
 }
 
-enum Type { Type1, Type2, Type3, Type4 }
-
 class _PaymentState extends State<Payment> {
-  Type myType = Type.Type1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFf5f9fc),
       appBar: AppBar(
-        title: Text('Payment'),
+        title: Text('Payment With Stripe'),
         centerTitle: true,
         backgroundColor: Colors.blue.shade800,
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Image.asset('assets/images/creditCard.jpg'),
             Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 100),
-              child: Center(
-                child: Text(
-                  'Chose Payment Method',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue.shade800,
-                  ),
+              padding: const EdgeInsets.only(left: 15, top: 10),
+              child: Text(
+                'Card Number :',
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: '0000 0000 0000 0000',
+                      border: InputBorder.none),
                 ),
               ),
             ),
-            RadioListTile<Type>(
-                title: Text('Credit Card'),
-                value: Type.Type1,
-                groupValue: myType,
-                onChanged: (Type type) {
-                  setState(() {
-                    myType = type;
-                  });
-                }),
             Padding(
-              padding: const EdgeInsets.only(left: 25, right: 20),
-              child: Divider(thickness: 1),
+              padding: const EdgeInsets.only(left: 15, top: 10),
+              child: Text(
+                'MM/YY :',
+              ),
             ),
-            RadioListTile<Type>(
-                title: Text('Debit Card'),
-                value: Type.Type2,
-                groupValue: myType,
-                onChanged: (Type type) {
-                  setState(() {
-                    myType = type;
-                  });
-                }),
-            Padding(
-              padding: const EdgeInsets.only(left: 25, right: 20),
-              child: Divider(thickness: 1),
+            Container(
+              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: 'MM/YY', border: InputBorder.none),
+                ),
+              ),
             ),
-            RadioListTile<Type>(
-                title: Text('Net Banking'),
-                value: Type.Type3,
-                groupValue: myType,
-                onChanged: (Type type) {
-                  setState(() {
-                    myType = type;
-                  });
-                }),
             Padding(
-              padding: const EdgeInsets.only(left: 25, right: 20),
-              child: Divider(thickness: 1),
+              padding: const EdgeInsets.only(left: 15, top: 10),
+              child: Text(
+                'CVC :',
+              ),
             ),
-            RadioListTile<Type>(
-                title: Text('Wallets'),
-                value: Type.Type4,
-                groupValue: myType,
-                onChanged: (Type type) {
-                  setState(() {
-                    myType = type;
-                  });
-                }),
-            Padding(
-              padding: const EdgeInsets.only(left: 25, right: 20),
-              child: Divider(thickness: 1),
+            Container(
+              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      hintText: 'CVC', border: InputBorder.none),
+                ),
+              ),
             ),
             InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return CardInformation();
+                  return Ticket();
                 }));
               },
               child: Container(
                 width: double.infinity,
                 height: 48,
                 margin:
-                    EdgeInsets.only(left: 20, top: 100, right: 20, bottom: 10),
+                    EdgeInsets.only(left: 20, top: 80, right: 20, bottom: 10),
                 padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                   color: Colors.blue.shade800,

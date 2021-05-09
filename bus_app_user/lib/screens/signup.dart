@@ -178,7 +178,8 @@ class _SignupState extends State<Signup> {
                   onTap: () {
                     FirebaseAuth.instance
                         .createUserWithEmailAndPassword(
-                            email: email.text, password: password.text)
+                            email: emailControler.text,
+                            password: passwordControler.text)
                         .then((value) => Navigator.pop(context));
                   },
                   child: Container(
