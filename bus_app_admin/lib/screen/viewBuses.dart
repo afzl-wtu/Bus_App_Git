@@ -1,30 +1,15 @@
 import 'package:bus_tick/models/bus_model.dart';
-import 'package:bus_tick/models/route_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ViewBuses extends StatelessWidget {
-  final List<BusModel> buses = List.generate(
-    5,
-    (index) => BusModel(
-      busname: (index + 1).toString(),
-      busNo: 'CF5468',
-      totalseats: 45,
-      busCondition: 'A/C',
-      routes: List.generate(
-        5,
-        (index) => RouteModel(
-          from: index.toString(),
-          to: (index + 5).toString(),
-          fromTime: DateTime.now(),
-          toTime: DateTime.now().add(
-            Duration(days: 5),
-          ),
-          costPerSeat: 200,
-        ),
-      ),
-    ),
-  );
+  final busesRef = FirebaseFirestore.instance.collection('buses');
+  List<BusModel> _buses;
+  Future<void> _getData() async {
+    final _response = await busesRef.get();
+    _buses = BusModel.toList(_response);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,51 +19,57 @@ class ViewBuses extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue.shade800,
       ),
-      body: ListView.separated(
-          itemBuilder: (_, i) => ExpansionTile(
-                leading: CircleAvatar(
-                  child: Text(buses[i].busname),
-                ),
-                title: Text(buses[i].busNo.toString()),
-                subtitle: Text(buses[i].busCondition),
-                children: buses[i]
-                    .routes
-                    .map((e) => Container(
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text('From: ${e.from}'),
-                                      Spacer(),
-                                      Text(
-                                          'Time: ${DateFormat('yyyy-MM-dd hh:mm').format(e.fromTime)}'),
-                                    ],
+      body: FutureBuilder(
+        future: _getData(),
+        builder: (_, snap) => snap.connectionState == ConnectionState.waiting
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : ListView.separated(
+                itemBuilder: (_, i) => ExpansionTile(
+                      leading: CircleAvatar(
+                        child: Text((i + 1).toString()),
+                      ),
+                      title: Text(_buses[i].busName),
+                      subtitle: Text(_buses[i].busNo),
+                      children: _buses[i]
+                          .routes
+                          .map((e) => Container(
+                                margin: EdgeInsets.only(left: 20, right: 20),
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text('From: ${e.from}'),
+                                            Spacer(),
+                                            Text('Time: ${e.fromTime}'),
+                                          ],
+                                        ),
+                                        SizedBox(height: 5),
+                                        Row(
+                                          children: [
+                                            Text('Destination: ${e.to}'),
+                                            Spacer(),
+                                            Text('Time: ${e.toTime}')
+                                          ],
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text('Cost Per Seat: ${e.costPerSeat}'),
+                                      ],
+                                    ),
                                   ),
-                                  SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      Text('Destination: ${e.to}'),
-                                      Spacer(),
-                                      Text(
-                                          'Time: ${DateFormat('yyyy-MM-dd hh:mm').format(e.toTime)}')
-                                    ],
-                                  ),
-                                  SizedBox(height: 5),
-                                  Text('Cost Per Seat: ${e.costPerSeat}'),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ))
-                    .toList(),
-              ),
-          separatorBuilder: (_, i) => Divider(thickness: 1),
-          itemCount: buses.length),
+                                ),
+                              ))
+                          .toList(),
+                    ),
+                separatorBuilder: (_, i) => Divider(thickness: 1),
+                itemCount: _buses.length),
+      ),
     );
   }
 }

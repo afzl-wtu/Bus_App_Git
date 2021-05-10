@@ -1,4 +1,6 @@
+import 'package:bus_tick/models/route_model.dart';
 import 'package:bus_tick/widgets/my_textField.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddBuses extends StatefulWidget {
@@ -17,55 +19,126 @@ class _AddBusesState extends State<AddBuses> {
   final TextEditingController _costPerSeatController = TextEditingController();
   final TextEditingController _totalNumberOfSeatController =
       TextEditingController();
+  List<RouteModel> _routes = [];
+  final busesRef = FirebaseFirestore.instance.collection('buses');
+  Future<void> _addBus() async {
+    setState(() {
+      _isUploading = true;
+    });
+    try {
+      final _response = await busesRef.add({
+        'busName': _busNameController.text,
+        'busNumber': _busNumberController.text,
+        'busCondition': _busConditionController.text,
+        'totalNumberOfSeats': _totalNumberOfSeatController.text,
+        'busRoutes': _routes
+            .map((e) => {
+                  'costPerSeat': e.costPerSeat ?? '',
+                  'from': e.from ?? '',
+                  'to': e.to ?? '',
+                  'fromTime': e.fromTime ?? '',
+                  'toTime': e.toTime ?? '',
+                })
+            .toList(),
+      });
+      setState(() {
+        _busConditionController.clear();
+        _busNumberController.clear();
+        _busNameController.clear();
+        _totalNumberOfSeatController.clear();
+        _routes = [];
+        _isUploading = false;
+      });
+    } catch (error) {
+      setState(() {
+        print('PP Error in response of addBuse: $error');
+        _isError = true;
+      });
+    }
+  }
+
+  bool _isUploading = false;
+  bool _isError = false;
+  void dispose() {
+    _fromCityController.dispose();
+    _fromCityTimeController.dispose();
+    _toCityController.dispose();
+    _toCityTimeController.dispose();
+    _busNameController.dispose();
+    _busNumberController.dispose();
+    _busConditionController.dispose();
+    _costPerSeatController.dispose();
+    _totalNumberOfSeatController.dispose();
+    super.dispose();
+  }
 
   void bottomSheet(context) {
     showModalBottomSheet(
         context: context,
-        isScrollControlled: true,
+        isScrollControlled: false,
         builder: (BuildContext context) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              myTextField('From City', _fromCityController),
-              myTextField('Time', _fromCityTimeController),
-              myTextField('To City', _toCityController),
-              myTextField('Time', _toCityTimeController),
-              myTextField('Cost Per Seat', _costPerSeatController),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.amber),
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          'Done',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Expanded(
-                      child: TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.amber),
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          'Add More ',
-                          style: TextStyle(color: Colors.black),
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                myTextField('From City', _fromCityController),
+                myTextField('Time', _fromCityTimeController, true, context),
+                myTextField('To City', _toCityController),
+                myTextField('Time', _toCityTimeController, true, context),
+                myTextField('Cost Per Seat', _costPerSeatController),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.amber),
+                          ),
+                          onPressed: () {
+                            print('PP done button Pressed');
+                            if (_fromCityController.text.isNotEmpty &&
+                                _costPerSeatController.text.isNotEmpty) {
+                              _addRoute();
+                              Navigator.pop(context);
+                            }
+                          },
+                          child: Text(
+                            'Done',
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.amber),
+                          ),
+                          onPressed: () {
+                            if (_fromCityController.text.isNotEmpty &&
+                                _costPerSeatController.text.isNotEmpty) {
+                              _addRoute();
+                              _fromCityController.clear();
+                              _toCityController.clear();
+                              _fromCityTimeController.clear();
+
+                              _toCityTimeController.clear();
+                            }
+                          },
+                          child: Text(
+                            'Add More ',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           );
         });
   }
@@ -114,13 +187,11 @@ class _AddBusesState extends State<AddBuses> {
             ),
             InkWell(
               onTap: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (ctx) {
-                //       return SearchBuses();
-                //     },
-                //   ),
-                // );
+                _isError
+                    ? Navigator.pop(context)
+                    : _isUploading
+                        ? print('Uploading Document')
+                        : _addBus();
               },
               child: Container(
                 width: double.infinity,
@@ -132,14 +203,18 @@ class _AddBusesState extends State<AddBuses> {
                   borderRadius: BorderRadius.circular(7),
                 ),
                 child: Center(
-                  child: Text(
-                    'Add Bus',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                  child: _isError
+                      ? Icon(Icons.error_outline)
+                      : _isUploading
+                          ? CircularProgressIndicator()
+                          : Text(
+                              'Add Bus',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                 ),
               ),
             ),
@@ -147,5 +222,15 @@ class _AddBusesState extends State<AddBuses> {
         ),
       ),
     );
+  }
+
+  void _addRoute() {
+    _routes.add(RouteModel(
+      from: _fromCityController.text,
+      to: _toCityController.text,
+      fromTime: _fromCityTimeController.text,
+      toTime: _toCityTimeController.text,
+      costPerSeat: double.parse(_costPerSeatController.text),
+    ));
   }
 }

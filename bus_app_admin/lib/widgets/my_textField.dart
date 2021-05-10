@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-Widget myTextField(String text, TextEditingController controller) {
+Widget myTextField(String text, TextEditingController controller,
+    [bool timePicker = false, BuildContext context]) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -19,6 +20,11 @@ Widget myTextField(String text, TextEditingController controller) {
         child: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: TextField(
+            onTap: timePicker
+                ? () {
+                    _showTimePicker(context, controller);
+                  }
+                : null,
             controller: controller,
             decoration: InputDecoration(border: InputBorder.none),
           ),
@@ -26,4 +32,18 @@ Widget myTextField(String text, TextEditingController controller) {
       )
     ],
   );
+}
+
+Future<void> _showTimePicker(BuildContext context, timeCtl) async {
+  TimeOfDay time = TimeOfDay.now();
+  FocusScope.of(context).requestFocus(new FocusNode());
+
+  TimeOfDay picked = await showTimePicker(context: context, initialTime: time);
+  if (picked != null && picked != time) {
+    timeCtl.text = picked
+        .toString()
+        .replaceFirst(RegExp(r'TimeOfDay\('), '')
+        .replaceFirst(RegExp(r'\)'), ''); // add this line.
+
+  }
 }
