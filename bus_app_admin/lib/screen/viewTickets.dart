@@ -17,7 +17,6 @@ class ViewTickets extends StatelessWidget {
       to: 'Islamabad',
       date: DateTime.now(),
       totalSeats: 15,
-      choseSeats: 4,
       totalSeatsCost: 4500,
     ),
   );
@@ -89,11 +88,6 @@ class ViewTickets extends StatelessWidget {
                 Column(children: [
                   Text('To', style: TextStyle(color: Colors.grey)),
                   Text('${passengerTicket[i].to}',
-                      style: TextStyle(color: Colors.black)),
-                ]),
-                Column(children: [
-                  Text('Chose Seats', style: TextStyle(color: Colors.grey)),
-                  Text('${passengerTicket[i].choseSeats}',
                       style: TextStyle(color: Colors.black)),
                 ]),
                 Column(children: [

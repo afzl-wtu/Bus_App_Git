@@ -6,11 +6,11 @@ class TicketModal {
   final String busNumber;
   final String busName;
   final String from;
-  final DateTime fromTime;
+  final String fromTime;
   final String to;
   final DateTime date;
   final int totalSeats;
-  final int totalSeatsCost;
+  final double totalSeatsCost;
 
   TicketModal({
     this.passengerName,

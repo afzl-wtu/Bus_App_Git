@@ -1,8 +1,8 @@
 class RouteModel {
   final String from;
   final String to;
-  final DateTime fromTime;
-  final DateTime toTime;
+  final String fromTime;
+  final String toTime;
   final double costPerSeat;
 
   RouteModel({

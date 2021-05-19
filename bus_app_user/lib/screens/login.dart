@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import './tabscreen.dart';
@@ -9,6 +10,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Future<void> _login() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailControler.text,
+      password: passwordControler.text,
+    );
+    Navigator.pop(context);
+  }
+
   bool checkBoxValue = true;
   final emailControler = TextEditingController();
   final passwordControler = TextEditingController();
@@ -103,7 +112,7 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Remember Me Forgot your password ?',
+                            'Remember Me',
                             style:
                                 TextStyle(color: Colors.black54, fontSize: 16),
                           ),
@@ -118,22 +127,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      PageRouteBuilder(
-                          transitionDuration: Duration(milliseconds: 400),
-                          transitionsBuilder:
-                              (context, animation, animationTime, child) =>
-                                  ScaleTransition(
-                                    alignment: Alignment.center,
-                                    scale: animation,
-                                    child: child,
-                                  ),
-                          pageBuilder: (context, animation, animationTime) =>
-                              HomeScreen()),
-                    );
-                  },
+                  onTap: _login,
                   child: Container(
                     height: 50,
                     width: double.infinity,
@@ -209,7 +203,7 @@ class _LoginState extends State<Login> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                'If you have no an account? ',
+                                'If you have no any account? ',
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               ),

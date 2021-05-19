@@ -22,7 +22,7 @@ class BusModel {
             busName: e['busName'],
             busNo: e['busNumber'],
             busCondition: e['busCondition'],
-            totalSeats: e['totalSeatss'],
+            totalSeats: int.parse(e['totalNumberOfSeats']),
             routes: (e['busRoutes'] as List)
                 .map(
                   (e) => RouteModel(

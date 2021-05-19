@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ticket_bus/models/ticket_modal.dart';
 import 'package:ticket_bus/screens/ticket.dart';
 
 class Payment extends StatefulWidget {
+  final TicketModal ticket;
+  Payment(this.ticket);
   @override
   _PaymentState createState() => _PaymentState();
 }

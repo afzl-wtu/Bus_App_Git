@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import './tabscreen.dart';
 import './login.dart';
 
 class Signup extends StatefulWidget {
@@ -14,6 +13,12 @@ class _SignupState extends State<Signup> {
   final emailControler = TextEditingController();
   final passwordControler = TextEditingController();
   final confirmPasswordControler = TextEditingController();
+  Future<void> _signup() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailControler.text, password: passwordControler.text);
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -175,13 +180,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                            email: emailControler.text,
-                            password: passwordControler.text)
-                        .then((value) => Navigator.pop(context));
-                  },
+                  onTap: _signup,
                   child: Container(
                     height: 50,
                     width: double.infinity,

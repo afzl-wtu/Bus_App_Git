@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundImage: AssetImage('assets/images/profile.jpg'),
                     ),
                     Text(
-                      'Tasadduq W2',
+                      'DoL',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
@@ -118,7 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   backgroundColor:
                       MaterialStateProperty.all(Colors.grey.shade50),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
               ),
               Divider(thickness: 1),
             ],

@@ -1,41 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_bus/models/bus_model.dart';
-import 'package:ticket_bus/models/route_model.dart';
 import 'package:ticket_bus/screens/contactPassenger.dart';
 
 class SearchBuses extends StatelessWidget {
-  final List<BusModel> buses = List.generate(
-    5,
-    (index) => BusModel(
-      busname: (index + 1).toString(),
-      busNo: 'CF5468',
-      totalseats: 45,
-      busCondition: 'A/C',
-      routes: List.generate(
-        5,
-        (index) => RouteModel(
-          from: index.toString(),
-          to: (index + 5).toString(),
-          fromTime: DateTime.now(),
-          toTime: DateTime.now().add(
-            Duration(days: 5),
-          ),
-          costPerSeat: 200,
-        ),
-      ),
-    ),
-  );
+  final List<BusModel> buses;
+  final String fromCity;
+  final String toCity;
+  final DateTime chosenDate;
+  final String seats;
+
+  SearchBuses({
+    @required this.buses,
+    @required this.fromCity,
+    @required this.toCity,
+    @required this.chosenDate,
+    @required this.seats,
+  });
+
+  List<BusModel> get _busesToShow {
+    final a = buses
+        .where(
+          (element) => (element.routes.any(
+            (elementt) => (elementt.from == fromCity && elementt.to == toCity),
+          )),
+        )
+        .toList();
+    List<BusModel> b = [];
+    a.forEach((element) {
+      element.routes.forEach(
+        (elementt) {
+          if (elementt.from == fromCity && elementt.to == toCity)
+            b.add(
+              BusModel(
+                routes: [elementt],
+                totalSeats: element.totalSeats,
+                busName: element.busName,
+                busCondition: element.busCondition,
+                busNo: element.busNo,
+              ),
+            );
+        },
+      );
+    });
+    return b;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: Text('Search Buses'),
+        title: Text('Select Bus'),
         centerTitle: true,
         backgroundColor: Colors.blue.shade800,
       ),
       body: ListView.builder(
-        itemCount: buses.length,
+        itemCount: _busesToShow.length,
         itemBuilder: (ctx, i) {
           return Container(
             margin: EdgeInsets.only(left: 10, right: 10, top: 6),
@@ -49,30 +69,35 @@ class SearchBuses extends StatelessWidget {
             child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                    return ContactPassenger();
+                    return ContactPassenger(
+                      numberOfSeats: seats,
+                      chosenBus: _busesToShow[i],
+                      chosenDate: chosenDate,
+                    );
                   }));
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Bus Name :     ${buses[i].busname}'),
+                    Text('Bus Name :     ${_busesToShow[i].busName}'),
                     SizedBox(height: 2),
-                    Text('Bus Number :     ${buses[i].busNo}'),
+                    Text('Bus Number :     ${_busesToShow[i].busNo}'),
                     SizedBox(height: 2),
-                    Text('Total Seats :     ${buses[i].totalseats}'),
+                    Text('Total Seats :     ${_busesToShow[i].totalSeats}'),
                     SizedBox(height: 2),
-                    Text('Bus Condition :     ${buses[i].busCondition}'),
+                    Text('Bus Condition :     ${_busesToShow[i].busCondition}'),
                     SizedBox(height: 2),
                     Text(
-                        'Cost Per Seat :     ${buses[i].routes[i].costPerSeat}'),
+                        'Cost Per Seat :     ${_busesToShow[i].routes[0].costPerSeat}'),
                     SizedBox(height: 2),
-                    Text('From :     ${buses[i].routes[i].from}'),
+                    Text('From :     ${_busesToShow[i].routes[0].from}'),
                     SizedBox(height: 2),
-                    Text('From Time :     ${buses[i].routes[i].fromTime}'),
+                    Text(
+                        'From Time :     ${_busesToShow[i].routes[0].fromTime}'),
                     SizedBox(height: 2),
-                    Text('To :     ${buses[i].routes[i].to}'),
+                    Text('To :     ${_busesToShow[i].routes[0].to}'),
                     SizedBox(height: 2),
-                    Text('To Time :     ${buses[i].routes[i].toTime}'),
+                    Text('To Time :     ${_busesToShow[i].routes[0].toTime}'),
                   ],
                 )
                 // child: Row(
