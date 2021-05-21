@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ticket_bus/screens/tabscreen.dart';
 
 import './signup.dart';
@@ -31,13 +32,14 @@ class _SelectLoginState extends State<SelectLogin> {
                         padding: EdgeInsets.only(
                             top: mediaQuery.size.height * 1 / 8),
                         child: Text(
-                          ' Start By Creating An \n           Account',
+                          ' Start By Creating An \n Account',
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
-                            fontSize: 32.0,
-                            letterSpacing: 0.4,
+                            fontSize: 25,
+                            // letterSpacing: 0.4,
                             color: Colors.black,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -77,7 +79,7 @@ class _SelectLoginState extends State<SelectLogin> {
                             child: Text(
                               'CREATE AN ACCOUNT',
                               style: TextStyle(
-                                letterSpacing: 1,
+                                // letterSpacing: 1,
                                 color: Colors.white,
                                 fontSize: 17.0,
                                 fontWeight: FontWeight.bold,
@@ -119,11 +121,11 @@ class _SelectLoginState extends State<SelectLogin> {
                         elevation: 8,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 110, vertical: 15),
+                              horizontal: 100, vertical: 15),
                           child: Text(
                             'SIGN IN',
                             style: TextStyle(
-                              letterSpacing: 1,
+                              // letterSpacing: 1,
                               color: Colors.white,
                               fontSize: 17.0,
                               fontWeight: FontWeight.bold,

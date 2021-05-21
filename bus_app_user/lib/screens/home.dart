@@ -74,86 +74,89 @@ class _HomeState extends State<Home> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'From :',
-                                ),
-                                Container(
-                                  width: 300,
-                                  // margin:
-                                  //     EdgeInsets.only(left: 20, top: 10, right: 20),
-                                  padding: EdgeInsets.only(left: 10),
-                                  decoration: BoxDecoration(
-                                    // color: Colors.grey.shade300,
-                                    borderRadius: BorderRadius.circular(7),
+                            FittedBox(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'From :',
                                   ),
-                                  child: DropdownButton(
-                                    hint: Text('Choose City'),
-                                    iconSize: 30,
-                                    isExpanded: true,
-                                    value: _fromChosenCity,
-                                    onChanged: (newCity) {
-                                      setState(() {
-                                        _fromChosenCity = newCity;
-                                      });
-                                    },
-                                    items: _fromCities.map((e) {
-                                      return DropdownMenuItem(
-                                          value: e,
-                                          child: Text(
-                                            e,
-                                          ));
-                                    }).toList(),
+                                  Container(
+                                    width: 300,
+                                    // margin:
+                                    //     EdgeInsets.only(left: 20, top: 10, right: 20),
+                                    padding: EdgeInsets.only(left: 10),
+                                    decoration: BoxDecoration(
+                                      // color: Colors.grey.shade300,
+                                      borderRadius: BorderRadius.circular(7),
+                                    ),
+                                    child: DropdownButton(
+                                      hint: Text('Choose City'),
+                                      iconSize: 30,
+                                      isExpanded: true,
+                                      value: _fromChosenCity,
+                                      onChanged: (newCity) {
+                                        setState(() {
+                                          _fromChosenCity = newCity;
+                                        });
+                                      },
+                                      items: _fromCities.map((e) {
+                                        return DropdownMenuItem(
+                                            value: e,
+                                            child: Text(
+                                              e,
+                                            ));
+                                      }).toList(),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            SizedBox(
+                            (SizedBox(
                               height: 10,
-                            ),
-                            Divider(
-                              thickness: 1.5,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'To :',
-                                ),
-                                Container(
-                                  width: 300,
-                                  // margin:
-                                  //     EdgeInsets.only(left: 20, top: 10, right: 20),
-                                  padding: EdgeInsets.only(left: 10),
-                                  decoration: BoxDecoration(
-                                    // color: Colors.grey.shade300,
-                                    borderRadius: BorderRadius.circular(7),
+                            )),
+                            FittedBox(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'To :',
                                   ),
-                                  child: DropdownButton(
-                                    hint: Text('Choose City'),
-                                    iconSize: 30,
-                                    isExpanded: true,
-                                    value: _toChosenCity,
-                                    onChanged: (newCity) {
-                                      setState(() {
-                                        _toChosenCity = newCity;
-                                      });
-                                    },
-                                    items: _toCities.map((e) {
-                                      return DropdownMenuItem(
-                                          value: e,
-                                          child: Text(
-                                            e,
-                                          ));
-                                    }).toList(),
+                                  Container(
+                                    width: 300,
+                                    // margin:
+                                    //     EdgeInsets.only(left: 20, top: 10, right: 20),
+                                    padding: EdgeInsets.only(left: 10),
+                                    decoration: BoxDecoration(
+                                      // color: Colors.grey.shade300,
+                                      borderRadius: BorderRadius.circular(7),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: DropdownButton(
+                                        hint: Text('Choose City'),
+                                        iconSize: 30,
+                                        isExpanded: true,
+                                        value: _toChosenCity,
+                                        onChanged: (newCity) {
+                                          setState(() {
+                                            _toChosenCity = newCity;
+                                          });
+                                        },
+                                        items: _toCities.map((e) {
+                                          return DropdownMenuItem(
+                                              value: e,
+                                              child: Text(
+                                                e,
+                                              ));
+                                        }).toList(),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -179,35 +182,37 @@ class _HomeState extends State<Home> {
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   top: 15, bottom: 15, left: 15),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    'Select Date :',
-                                  ),
-                                  Card(
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    color: Colors.white,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 15,
-                                          bottom: 15,
-                                          right: 150,
-                                          left: 10),
-                                      child: Row(
-                                        children: [
-                                          // ignore: unnecessary_brace_in_string_interps
-                                          Text(
-                                              '${_chosenDate.day} - ${_chosenDate.month} - ${_chosenDate.year}'),
-                                          // Text(date.month.toString()),
-                                          // Text(date.year.toString()),
-                                        ],
+                              child: FittedBox(
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Select Date :',
+                                    ),
+                                    Card(
+                                      elevation: 0,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 15,
+                                            bottom: 15,
+                                            right: 150,
+                                            left: 10),
+                                        child: Row(
+                                          children: [
+                                            // ignore: unnecessary_brace_in_string_interps
+                                            Text(
+                                                '${_chosenDate.day} - ${_chosenDate.month} - ${_chosenDate.year}'),
+                                            // Text(date.month.toString()),
+                                            // Text(date.year.toString()),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -222,29 +227,31 @@ class _HomeState extends State<Home> {
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 top: 15, bottom: 15, left: 10),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Chose Seat :',
-                                ),
-                                Container(
-                                  width: 250,
-                                  // margin: const EdgeInsets.only(
-                                  //     left: 15, top: 10, right: 15),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(7),
+                            child: FittedBox(
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Chose Seat :',
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 20),
-                                    child: TextField(
-                                      controller: _choseSeatControler,
-                                      decoration: InputDecoration(
-                                          border: InputBorder.none),
+                                  Container(
+                                    width: 250,
+                                    // margin: const EdgeInsets.only(
+                                    //     left: 15, top: 10, right: 15),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(7),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 20),
+                                      child: TextField(
+                                        controller: _choseSeatControler,
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),

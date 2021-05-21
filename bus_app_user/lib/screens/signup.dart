@@ -116,30 +116,30 @@ class _SignupState extends State<Signup> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    children: [
-                      Checkbox(
-                          value: checkBoxValue,
-                          activeColor: Colors.blue,
-                          onChanged: (bool newValue) {
-                            setState(() {
-                              checkBoxValue = newValue;
-                            });
-                          }),
-                      Column(children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'By clicking sign up you agree to the\n following',
-                            style:
-                                TextStyle(color: Colors.black54, fontSize: 16),
-                          ),
-                        ),
+                  child: FittedBox(
+                    child: Row(
+                      children: [
+                        Checkbox(
+                            value: checkBoxValue,
+                            activeColor: Colors.blue,
+                            onChanged: (bool newValue) {
+                              setState(() {
+                                checkBoxValue = newValue;
+                              });
+                            }),
                         Column(children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'By clicking sign up you agree to the\n following',
+                              style: TextStyle(
+                                  color: Colors.black54, fontSize: 16),
+                            ),
+                          ),
                           Row(
                             children: [
                               Text(
-                                'Terms and Conditions',
+                                'Terms & Conditions',
                                 style:
                                     TextStyle(color: Colors.blue, fontSize: 16),
                               ),
@@ -149,10 +149,10 @@ class _SignupState extends State<Signup> {
                                     color: Colors.black54, fontSize: 16),
                               )
                             ],
-                          ),
+                          )
                         ])
-                      ])
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 // InkWell(
@@ -251,29 +251,31 @@ class _SignupState extends State<Signup> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'Already have an account? ',
-                                style: TextStyle(
-                                    color: Colors.black54, fontSize: 16),
-                              ),
-                              Card(
-                                color: Colors.blue,
-                                elevation: 10,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'SIGN IN ',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                        child: FittedBox(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'Already have an account? ',
+                                  style: TextStyle(
+                                      color: Colors.black54, fontSize: 16),
+                                ),
+                                Card(
+                                  color: Colors.blue,
+                                  elevation: 10,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'SIGN IN ',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ]),
+                              ]),
+                        ),
                       ),
                     ),
                   ]),

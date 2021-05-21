@@ -98,26 +98,30 @@ class _LoginState extends State<Login> {
                 SizedBox(height: 20),
                 ListTile(
                   // tileColor: Colors.teal,
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Checkbox(
-                          value: checkBoxValue,
-                          activeColor: Colors.blue,
-                          onChanged: (bool newValue) {
-                            setState(() {
-                              checkBoxValue = newValue;
-                            });
-                          }),
-                      Text(
-                        'Remember Me',
-                        style: TextStyle(color: Colors.black54, fontSize: 16),
-                      ),
-                    ],
+                  title: FittedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Checkbox(
+                            value: checkBoxValue,
+                            activeColor: Colors.blue,
+                            onChanged: (bool newValue) {
+                              setState(() {
+                                checkBoxValue = newValue;
+                              });
+                            }),
+                        Text(
+                          'Remember Me',
+                          style: TextStyle(
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   trailing: Text(
                     'Forgotten Password?',
-                    style: TextStyle(color: Colors.black54, fontSize: 16),
+                    style: TextStyle(color: Colors.black54),
                   ),
                 ),
                 Padding(
@@ -200,29 +204,31 @@ class _LoginState extends State<Login> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'If you have no any account? ',
-                                style: TextStyle(
-                                    color: Colors.black54, fontSize: 16),
-                              ),
-                              Card(
-                                color: Colors.blue,
-                                elevation: 10,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'SIGN UP ',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                        child: FittedBox(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'If you have no any account? ',
+                                  style: TextStyle(
+                                      color: Colors.black54, fontSize: 16),
+                                ),
+                                Card(
+                                  color: Colors.blue,
+                                  elevation: 10,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'SIGN UP ',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ]),
+                              ]),
+                        ),
                       ),
                     ),
                   ]),

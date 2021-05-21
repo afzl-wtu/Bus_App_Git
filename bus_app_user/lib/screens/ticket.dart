@@ -21,7 +21,6 @@ class Ticket extends StatelessWidget {
                 child: Text(
                   'Your Ticket',
                   style: TextStyle(
-                    letterSpacing: 1,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
@@ -47,7 +46,7 @@ class Ticket extends StatelessWidget {
                           Text(
                             'Tasadduq \n Travels Company',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                               color: Colors.blue.shade800,
                             ),
@@ -88,12 +87,13 @@ class Ticket extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 100, vertical: 10),
-                    child: Text(
-                      'BACK',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+                    child: FittedBox(
+                      child: Text(
+                        'BACK',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
