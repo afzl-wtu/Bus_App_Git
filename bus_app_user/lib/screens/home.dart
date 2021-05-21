@@ -63,158 +63,233 @@ class _HomeState extends State<Home> {
                       child: Image.asset('assets/images/logo Bus App.jpeg',
                           height: 200)),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 20),
-                    child: Text(
-                      'From :',
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 20, top: 10, right: 20),
-                    padding: EdgeInsets.only(left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: DropdownButton(
-                      hint: Text('Choose City'),
-                      underline: SizedBox(),
-                      iconSize: 30,
-                      isExpanded: true,
-                      value: _fromChosenCity,
-                      onChanged: (newCity) {
-                        setState(() {
-                          _fromChosenCity = newCity;
-                        });
-                      },
-                      items: _fromCities.map((e) {
-                        return DropdownMenuItem(
-                            value: e,
-                            child: Text(
-                              e,
-                            ));
-                      }).toList(),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 20),
-                    child: Text(
-                      'To :',
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 20, top: 10, right: 20),
-                    padding: EdgeInsets.only(left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: DropdownButton(
-                      hint: Text('Choose City'),
-                      underline: SizedBox(),
-                      iconSize: 30,
-                      isExpanded: true,
-                      value: _toChosenCity,
-                      onChanged: (newCity) {
-                        setState(() {
-                          _toChosenCity = newCity;
-                        });
-                      },
-                      items: _toCities.map((e) {
-                        return DropdownMenuItem(
-                            value: e,
-                            child: Text(
-                              e,
-                            ));
-                      }).toList(),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 20),
-                    child: Text(
-                      'Select Date :',
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      selectTimePicker(context);
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 48,
-                      margin: EdgeInsets.only(left: 20, top: 10, right: 20),
-                      padding: EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(7),
-                      ),
-                      child: Row(
-                        children: [
-                          // ignore: unnecessary_brace_in_string_interps
-                          Text(
-                              '${_chosenDate.day} - ${_chosenDate.month} - ${_chosenDate.year}'),
-                          // Text(date.month.toString()),
-                          // Text(date.year.toString()),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15, top: 20),
-                    child: Text(
-                      'Chose Seat :',
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: TextField(
-                        controller: _choseSeatControler,
-                        decoration: InputDecoration(border: InputBorder.none),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (ctx) {
-                            return SearchBuses(
-                                fromCity: _fromChosenCity,
-                                toCity: _toChosenCity,
-                                chosenDate: _chosenDate,
-                                seats: _choseSeatControler.text,
-                                buses: _buses);
-                          },
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      elevation: 10,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'From :',
+                                ),
+                                Container(
+                                  width: 300,
+                                  // margin:
+                                  //     EdgeInsets.only(left: 20, top: 10, right: 20),
+                                  padding: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    // color: Colors.grey.shade300,
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
+                                  child: DropdownButton(
+                                    hint: Text('Choose City'),
+                                    iconSize: 30,
+                                    isExpanded: true,
+                                    value: _fromChosenCity,
+                                    onChanged: (newCity) {
+                                      setState(() {
+                                        _fromChosenCity = newCity;
+                                      });
+                                    },
+                                    items: _fromCities.map((e) {
+                                      return DropdownMenuItem(
+                                          value: e,
+                                          child: Text(
+                                            e,
+                                          ));
+                                    }).toList(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Divider(
+                              thickness: 1.5,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'To :',
+                                ),
+                                Container(
+                                  width: 300,
+                                  // margin:
+                                  //     EdgeInsets.only(left: 20, top: 10, right: 20),
+                                  padding: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    // color: Colors.grey.shade300,
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
+                                  child: DropdownButton(
+                                    hint: Text('Choose City'),
+                                    iconSize: 30,
+                                    isExpanded: true,
+                                    value: _toChosenCity,
+                                    onChanged: (newCity) {
+                                      setState(() {
+                                        _toChosenCity = newCity;
+                                      });
+                                    },
+                                    items: _toCities.map((e) {
+                                      return DropdownMenuItem(
+                                          value: e,
+                                          child: Text(
+                                            e,
+                                          ));
+                                    }).toList(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 48,
-                      margin: EdgeInsets.only(
-                          left: 20, top: 80, right: 20, bottom: 20),
-                      padding: EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade800,
-                        borderRadius: BorderRadius.circular(7),
                       ),
-                      child: Center(
-                        child: Text(
-                          'Search Buses',
-                          style: TextStyle(
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            selectTimePicker(context);
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            elevation: 10,
                             color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w400,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 18),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 15, bottom: 15, left: 15),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Select Date :',
+                                  ),
+                                  Card(
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 15,
+                                          bottom: 15,
+                                          right: 150,
+                                          left: 10),
+                                      child: Row(
+                                        children: [
+                                          // ignore: unnecessary_brace_in_string_interps
+                                          Text(
+                                              '${_chosenDate.day} - ${_chosenDate.month} - ${_chosenDate.year}'),
+                                          // Text(date.month.toString()),
+                                          // Text(date.year.toString()),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          elevation: 10,
+                          color: Colors.white,
+                          margin:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 18),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 15, bottom: 15, left: 10),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Chose Seat :',
+                                ),
+                                Container(
+                                  width: 250,
+                                  // margin: const EdgeInsets.only(
+                                  //     left: 15, top: 10, right: 15),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: TextField(
+                                      controller: _choseSeatControler,
+                                      decoration: InputDecoration(
+                                          border: InputBorder.none),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                  InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (ctx) {
+                              return SearchBuses(
+                                  fromCity: _fromChosenCity,
+                                  toCity: _toChosenCity,
+                                  chosenDate: _chosenDate,
+                                  seats: _choseSeatControler.text,
+                                  buses: _buses);
+                            },
+                          ),
+                        );
+                      },
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(30),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            color: Colors.red,
+                            elevation: 10,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 50, vertical: 15),
+                              child: Text(
+                                'SEARCH BUSES',
+                                style: TextStyle(
+                                  letterSpacing: 1,
+                                  color: Colors.white,
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )),
                 ],
               ),
             ),

@@ -13,7 +13,8 @@ class Notifications extends StatelessWidget {
           backgroundColor: Colors.white,
           title: Text(
             'Notifications',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+                color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 25),
           ),
         ),
         body: ListView.builder(
@@ -21,15 +22,35 @@ class Notifications extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(15.0),
-              child: ListTile(
-                title: Text('Ticketing 20% Off'),
-                trailing: Text('1:45 PM'),
-                leading: CircleAvatar(
-                  child: Icon(Icons.notification_important),
-                  backgroundColor: Colors.green,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.white,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: ListTile(
+                    title: Text('Ticketing 20% Off'),
+                    trailing: Text('1:45 PM'),
+                    leading: Card(
+                      elevation: 10,
+                      shadowColor: Colors.red,
+                      color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.notifications,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    subtitle: Text(
+                        'lorem ipsum dollar \n sit amet \n consectetutor \n adipicing elit sed'),
+                  ),
                 ),
-                subtitle: Text(
-                    'lorem ipsum dollar \n sit amet \n consectetutor \n adipicing elit sed'),
               ),
             );
           },

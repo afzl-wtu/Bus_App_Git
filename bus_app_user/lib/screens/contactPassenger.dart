@@ -23,7 +23,7 @@ class ContactPassenger extends StatelessWidget {
       appBar: AppBar(
         title: Text('Contact Passenger'),
         centerTitle: true,
-        backgroundColor: Colors.blue.shade800,
+        backgroundColor: Colors.blue[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -35,17 +35,20 @@ class ContactPassenger extends StatelessWidget {
                 'Phone Number :',
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  controller: phoneNumberControler,
-                  decoration: InputDecoration(border: InputBorder.none),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.white,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: TextField(
+                    controller: phoneNumberControler,
+                    decoration: InputDecoration(border: InputBorder.none),
+                  ),
                 ),
               ),
             ),
@@ -55,37 +58,43 @@ class ContactPassenger extends StatelessWidget {
                 'Name :',
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  controller: nameControler,
-                  decoration: InputDecoration(border: InputBorder.none),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.white,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: TextField(
+                    controller: nameControler,
+                    decoration: InputDecoration(border: InputBorder.none),
+                  ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, top: 20),
+              padding: const EdgeInsets.only(left: 20, top: 20),
               child: Text(
                 'Age :',
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  controller: ageControler,
-                  decoration: InputDecoration(border: InputBorder.none),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.white,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: TextField(
+                    controller: ageControler,
+                    decoration: InputDecoration(border: InputBorder.none),
+                  ),
                 ),
               ),
             ),
@@ -111,23 +120,25 @@ class ContactPassenger extends StatelessWidget {
                     ));
                   }));
               },
-              child: Container(
-                width: double.infinity,
-                height: 48,
-                margin:
-                    EdgeInsets.only(left: 20, top: 50, right: 20, bottom: 10),
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade800,
-                  borderRadius: BorderRadius.circular(7),
-                ),
-                child: Center(
-                  child: Text(
-                    'Next',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 60, vertical: 60),
+                child: Card(
+                  elevation: 10,
+                  shadowColor: Colors.red,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  color: Colors.red,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 100, vertical: 10),
+                    child: Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import './tabscreen.dart';
 import './signup.dart';
 
 class Login extends StatefulWidget {
@@ -26,15 +25,19 @@ class _LoginState extends State<Login> {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade800,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.white,
         centerTitle: true,
         leading: BackButton(
-          color: Colors.white,
+          color: Colors.grey,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text('Sign In Account'),
+        title: Text(
+          'Sign In Account',
+          style: TextStyle(color: Colors.grey),
+        ),
       ),
       backgroundColor: Colors.white,
       body: Container(
@@ -50,18 +53,16 @@ class _LoginState extends State<Login> {
                     left: mediaQuery.size.width * 1 / 15,
                     right: mediaQuery.size.width * 1 / 15,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.white,
+                    elevation: 10,
                     child: TextField(
                       controller: emailControler,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.mail,
-                        ),
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                        prefixIcon: Icon(Icons.mail_outline),
                         hintText: 'Email',
                       ),
                     ),
@@ -73,32 +74,32 @@ class _LoginState extends State<Login> {
                     left: mediaQuery.size.width * 1 / 15,
                     right: mediaQuery.size.width * 1 / 15,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
+                    elevation: 10,
+                    color: Colors.white,
                     child: TextField(
                       controller: passwordControler,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.lock),
-                        prefixIcon: Icon(
-                          Icons.vpn_key,
-                        ),
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                        prefixIcon: Icon(Icons.lock_outline),
                         hintText: 'Password',
                       ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: mediaQuery.size.height * 1 / 50,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //     top: mediaQuery.size.height * 1 / 50,
+                //   ),
+                // ),
+                SizedBox(height: 20),
+                ListTile(
+                  // tileColor: Colors.teal,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Checkbox(
                           value: checkBoxValue,
@@ -108,17 +109,15 @@ class _LoginState extends State<Login> {
                               checkBoxValue = newValue;
                             });
                           }),
-                      Column(children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Remember Me',
-                            style:
-                                TextStyle(color: Colors.black54, fontSize: 16),
-                          ),
-                        ),
-                      ])
+                      Text(
+                        'Remember Me',
+                        style: TextStyle(color: Colors.black54, fontSize: 16),
+                      ),
                     ],
+                  ),
+                  trailing: Text(
+                    'Forgotten Password?',
+                    style: TextStyle(color: Colors.black54, fontSize: 16),
                   ),
                 ),
                 Padding(
@@ -128,19 +127,20 @@ class _LoginState extends State<Login> {
                 ),
                 InkWell(
                   onTap: _login,
-                  child: Container(
-                    height: 50,
-                    width: double.infinity,
-                    margin: EdgeInsets.only(left: 20, right: 20, top: 100),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        border: Border.all(color: Colors.blue.shade800),
-                        color: Colors.blue.shade800),
-                    child: Center(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.red,
+                    elevation: 10,
+                    shadowColor: Colors.red,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
                       child: Text(
                         'SIGN IN ACCOUNT',
                         style: TextStyle(
                           color: Colors.white,
+                          letterSpacing: 1,
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -148,6 +148,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+
                 // Padding(
                 //   padding: const EdgeInsets.all(8.0),
                 //   child: Container(
@@ -207,11 +208,18 @@ class _LoginState extends State<Login> {
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               ),
-                              Text(
-                                'SIGN UP ',
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
+                              Card(
+                                color: Colors.blue,
+                                elevation: 10,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'SIGN UP ',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ]),

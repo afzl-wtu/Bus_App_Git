@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DrawerHeader(
-                decoration: BoxDecoration(color: Colors.blue.shade800),
+                decoration: BoxDecoration(color: Colors.blue[900]),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -42,94 +42,105 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              ElevatedButton.icon(
-                label: Text(
-                  'Profile',
-                  style: TextStyle(color: Colors.black),
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ElevatedButton.icon(
+                      label: Text(
+                        'Profile',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      icon: Icon(
+                        Icons.account_circle,
+                        color: Colors.black,
+                      ),
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.grey.shade50),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (ctx) {
+                          return ProfileSCreen();
+                        }));
+                      },
+                    ),
+                    Divider(thickness: 1),
+                    ElevatedButton.icon(
+                      label: Text(
+                        'Contact Us',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      icon: Icon(
+                        Icons.contact_phone,
+                        color: Colors.black,
+                      ),
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.grey.shade50),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (ctx) {
+                          return ContactUs();
+                        }));
+                      },
+                    ),
+                    Divider(thickness: 1),
+                    ElevatedButton.icon(
+                      label: Text(
+                        'My Ticket',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      icon: Icon(
+                        Icons.book,
+                        color: Colors.black,
+                      ),
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.grey.shade50),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (ctx) {
+                          return Ticket();
+                        }));
+                      },
+                    ),
+                    Divider(thickness: 1),
+                    ElevatedButton.icon(
+                      label: Text(
+                        'Log Out',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      icon: Icon(
+                        Icons.logout,
+                        color: Colors.black,
+                      ),
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.grey.shade50),
+                      ),
+                      onPressed: () {
+                        FirebaseAuth.instance.signOut();
+                      },
+                    ),
+                    Divider(thickness: 1),
+                  ],
                 ),
-                icon: Icon(
-                  Icons.account_circle,
-                  color: Colors.black,
-                ),
-                style: ButtonStyle(
-                  elevation: MaterialStateProperty.all(0),
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.grey.shade50),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                    return ProfileSCreen();
-                  }));
-                },
               ),
-              Divider(thickness: 1),
-              ElevatedButton.icon(
-                label: Text(
-                  'Contact Us',
-                  style: TextStyle(color: Colors.black),
-                ),
-                icon: Icon(
-                  Icons.contact_phone,
-                  color: Colors.black,
-                ),
-                style: ButtonStyle(
-                  elevation: MaterialStateProperty.all(0),
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.grey.shade50),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                    return ContactUs();
-                  }));
-                },
-              ),
-              Divider(thickness: 1),
-              ElevatedButton.icon(
-                label: Text(
-                  'My Ticket',
-                  style: TextStyle(color: Colors.black),
-                ),
-                icon: Icon(
-                  Icons.book,
-                  color: Colors.black,
-                ),
-                style: ButtonStyle(
-                  elevation: MaterialStateProperty.all(0),
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.grey.shade50),
-                ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                    return Ticket();
-                  }));
-                },
-              ),
-              Divider(thickness: 1),
-              ElevatedButton.icon(
-                label: Text(
-                  'Log Out',
-                  style: TextStyle(color: Colors.black),
-                ),
-                icon: Icon(
-                  Icons.logout,
-                  color: Colors.black,
-                ),
-                style: ButtonStyle(
-                  elevation: MaterialStateProperty.all(0),
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.grey.shade50),
-                ),
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-              ),
-              Divider(thickness: 1),
             ],
           ),
         ),
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.blue.shade800,
+          backgroundColor: Colors.blue[900],
           bottom: TabBar(
             indicatorColor: Colors.white,
             tabs: <Widget>[

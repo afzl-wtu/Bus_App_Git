@@ -17,7 +17,7 @@ class _PaymentState extends State<Payment> {
       appBar: AppBar(
         title: Text('Payment With Stripe'),
         centerTitle: true,
-        backgroundColor: Colors.blue.shade800,
+        backgroundColor: Colors.blue[900],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -30,18 +30,21 @@ class _PaymentState extends State<Payment> {
                 'Card Number :',
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: '0000 0000 0000 0000',
-                      border: InputBorder.none),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.white,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: '0000 0000 0000 0000',
+                        border: InputBorder.none),
+                  ),
                 ),
               ),
             ),
@@ -51,17 +54,20 @@ class _PaymentState extends State<Payment> {
                 'MM/YY :',
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: 'MM/YY', border: InputBorder.none),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.white,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'MM/YY', border: InputBorder.none),
+                  ),
                 ),
               ),
             ),
@@ -71,17 +77,20 @@ class _PaymentState extends State<Payment> {
                 'CVC :',
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(left: 15, top: 10, right: 15),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: 'CVC', border: InputBorder.none),
+            Padding(
+              padding: const EdgeInsets.only(right: 20, left: 20, top: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.white,
+                elevation: 10,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'CVC', border: InputBorder.none),
+                  ),
                 ),
               ),
             ),
@@ -91,23 +100,25 @@ class _PaymentState extends State<Payment> {
                   return Ticket();
                 }));
               },
-              child: Container(
-                width: double.infinity,
-                height: 48,
-                margin:
-                    EdgeInsets.only(left: 20, top: 80, right: 20, bottom: 10),
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade800,
-                  borderRadius: BorderRadius.circular(7),
-                ),
-                child: Center(
-                  child: Text(
-                    'Next',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 60, vertical: 60),
+                child: Card(
+                  elevation: 10,
+                  shadowColor: Colors.red,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  color: Colors.red,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 100, vertical: 10),
+                    child: Text(
+                      'Next',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

@@ -24,13 +24,17 @@ class _SignupState extends State<Signup> {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade800,
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.white,
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: Colors.grey),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text('Create An Account'),
+        title: Text(
+          'Create An Account',
+          style: TextStyle(color: Colors.grey),
+        ),
       ),
       backgroundColor: Colors.white,
       body: Container(
@@ -46,18 +50,18 @@ class _SignupState extends State<Signup> {
                     left: mediaQuery.size.width * 1 / 15,
                     right: mediaQuery.size.width * 1 / 15,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.white,
+                    elevation: 10,
                     child: TextField(
                       controller: emailControler,
                       decoration: InputDecoration(
                         prefixIcon: Icon(
-                          Icons.mail,
+                          Icons.mail_outline,
                         ),
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderSide: BorderSide.none),
                         hintText: 'Email',
                       ),
                     ),
@@ -69,19 +73,16 @@ class _SignupState extends State<Signup> {
                     left: mediaQuery.size.width * 1 / 15,
                     right: mediaQuery.size.width * 1 / 15,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.white,
+                    elevation: 10,
                     child: TextField(
                       controller: passwordControler,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.lock),
-                        prefixIcon: Icon(
-                          Icons.vpn_key,
-                        ),
-                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.lock_outline),
+                        border: OutlineInputBorder(borderSide: BorderSide.none),
                         hintText: 'Password',
                       ),
                     ),
@@ -93,19 +94,16 @@ class _SignupState extends State<Signup> {
                     left: mediaQuery.size.width * 1 / 15,
                     right: mediaQuery.size.width * 1 / 15,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.white,
+                    elevation: 10,
                     child: TextField(
                       controller: confirmPasswordControler,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.lock),
-                        prefixIcon: Icon(
-                          Icons.vpn_key,
-                        ),
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                        prefixIcon: Icon(Icons.lock_outline),
                         hintText: 'Confirm Password',
                       ),
                     ),
@@ -181,18 +179,19 @@ class _SignupState extends State<Signup> {
                 ),
                 InkWell(
                   onTap: _signup,
-                  child: Container(
-                    height: 50,
-                    width: double.infinity,
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(7),
-                        border: Border.all(color: Colors.blue.shade800),
-                        color: Colors.blue.shade800),
-                    child: Center(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.red,
+                    elevation: 10,
+                    shadowColor: Colors.red,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
                       child: Text(
                         'CREATE AN ACCOUNT',
                         style: TextStyle(
+                          letterSpacing: 1,
                           color: Colors.white,
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
@@ -260,11 +259,18 @@ class _SignupState extends State<Signup> {
                                 style: TextStyle(
                                     color: Colors.black54, fontSize: 16),
                               ),
-                              Text(
-                                'SIGN IN ',
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
+                              Card(
+                                color: Colors.blue,
+                                elevation: 10,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'SIGN IN ',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ]),

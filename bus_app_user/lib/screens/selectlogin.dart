@@ -65,24 +65,24 @@ class _SelectLoginState extends State<SelectLogin> {
                             ),
                           );
                         },
-                        child: Container(
-                          height: 50,
-                          width: double.infinity,
-                          margin: EdgeInsets.only(left: 20, right: 20),
-                          child: Center(
+                        child: Card(
+                          shadowColor: Colors.red,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          color: Colors.red,
+                          elevation: 8,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 15),
                             child: Text(
                               'CREATE AN ACCOUNT',
                               style: TextStyle(
+                                letterSpacing: 1,
                                 color: Colors.white,
-                                fontSize: 15.0,
+                                fontSize: 17.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.blue.shade800,
-                            borderRadius: BorderRadius.circular(7),
-                            border: Border.all(color: Colors.white),
                           ),
                         ),
                       ),
@@ -111,24 +111,24 @@ class _SelectLoginState extends State<SelectLogin> {
                           ),
                         );
                       },
-                      child: Container(
-                        height: 50,
-                        width: double.infinity,
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        child: Center(
+                      child: Card(
+                        shadowColor: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        color: Colors.blue[800],
+                        elevation: 8,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 110, vertical: 15),
                           child: Text(
                             'SIGN IN',
                             style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15.0,
+                              letterSpacing: 1,
+                              color: Colors.white,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(7),
-                          border: Border.all(color: Colors.white),
                         ),
                       ),
                     ),
