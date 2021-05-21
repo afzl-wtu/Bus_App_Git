@@ -2,7 +2,6 @@ class TicketModal {
   final String passengerName;
   final String passengerEmail;
   final String passengerNumber;
-  final int passengerAge;
   final String busNumber;
   final String busName;
   final String from;
@@ -16,7 +15,6 @@ class TicketModal {
     this.passengerName,
     this.passengerEmail,
     this.passengerNumber,
-    this.passengerAge,
     this.busNumber,
     this.busName,
     this.from,

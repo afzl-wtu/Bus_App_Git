@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:stripe_payment/stripe_payment.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:ticket_bus/models/ticket_modal.dart';
 import 'package:ticket_bus/screens/ticket.dart';
 
@@ -10,6 +15,34 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
+  @override
+  void initState() {
+    StripePayment.setOptions(StripeOptions(
+        publishableKey:
+            'pk_test_51IpsruCW3b1KcooqJWnZI00ScZSDNWTAhe3O4d7T8tT1LVZiuv6o9SIY0PVneDSdWoD0pnNaGa76u8vEY9XHTLVm00c3WPwmex'));
+    super.initState();
+  }
+
+  Future<void> startPayment() async {
+    // PaymentMethod _paymentMethod=PaymentMethod(card: CreditCard(number: ,expMonth: ,expYear: ,cvc: ));
+
+    //startStartDirectCharge(_paymentMethod);
+  }
+
+  Future<void> startStartDirectCharge(PaymentMethod a) async {
+    print('PP direct charge Started');
+    final http.Response response = await http.post(Uri.parse(null));
+    if (response != null) {
+      final paymentIntent = jsonDecode(response.body);
+      final status = paymentIntent['paymentIntent']['status'];
+      final acc = paymentIntent['stripeAccount'];
+      if (status == 'succeeded')
+        print('Payment status Succeeded');
+      else
+        print('payment Failded');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,9 +129,10 @@ class _PaymentState extends State<Payment> {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return Ticket();
-                }));
+                startPayment();
+                // Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                //   return Ticket();
+                // }));
               },
               child: Padding(
                 padding:
