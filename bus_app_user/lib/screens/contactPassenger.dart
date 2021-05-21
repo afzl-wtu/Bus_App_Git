@@ -134,7 +134,7 @@ class ContactPassenger extends StatelessWidget {
                         horizontal: 100, vertical: 10),
                     child: FittedBox(
                       child: Text(
-                        'Next',
+                        'NEXT',
                         style: TextStyle(
                           color: Colors.white,
                           // fontSize: 22,

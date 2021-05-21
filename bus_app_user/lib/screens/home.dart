@@ -287,7 +287,6 @@ class _HomeState extends State<Home> {
                               child: Text(
                                 'SEARCH BUSES',
                                 style: TextStyle(
-                                  letterSpacing: 1,
                                   color: Colors.white,
                                   fontSize: 17.0,
                                   fontWeight: FontWeight.bold,
