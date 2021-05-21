@@ -45,100 +45,113 @@ class _ProfileSCreenState extends State<ProfileSCreen> {
                 ]),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                  left: 5,
-                ),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  color: Colors.white,
-                  elevation: 5,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 90, vertical: 5),
-                    child: Column(
-                      children: [
-                        Text(
-                          'User Name',
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
-                        ),
-                        Text(
-                          'Chief Tasadduq W2',
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  color: Colors.white,
-                  elevation: 5,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 45, vertical: 5),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Adress',
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
+                child: Column(children: [
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                    elevation: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 90, vertical: 5),
+                      child: FittedBox(
+                        child: Column(
+                          children: [
+                            Text(
+                              'User Name',
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 20),
+                            ),
+                            Text(
+                              'Chief Tasadduq W2',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Tehsil & District Bahawalnagar',
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                color: Colors.white,
-                elevation: 5,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 100, vertical: 5),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Phone Number',
-                        style: TextStyle(color: Colors.grey, fontSize: 20),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                    elevation: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 45, vertical: 5),
+                      child: FittedBox(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Adress',
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 20),
+                            ),
+                            Text(
+                              'Tehsil & District Bahawalnagar',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                          ],
+                        ),
                       ),
-                      Text(
-                        '0306-00000000',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                color: Colors.white,
-                elevation: 5,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 65, vertical: 5),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Email',
-                        style: TextStyle(color: Colors.grey, fontSize: 20),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                    elevation: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 100, vertical: 5),
+                      child: FittedBox(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Phone Number',
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 20),
+                            ),
+                            Text(
+                              '0306-00000000',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                          ],
+                        ),
                       ),
-                      Text(
-                        'tasadaq.wtu@gmail.com',
-                        style: TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                    elevation: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 65, vertical: 5),
+                      child: FittedBox(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Email',
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 20),
+                            ),
+                            Text(
+                              'tasadaq.wtu@gmail.com',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
               ),
               Padding(
                 padding:
@@ -152,12 +165,13 @@ class _ProfileSCreenState extends State<ProfileSCreen> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 60, vertical: 10),
-                    child: Text(
-                      'Update Profile',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+                    child: FittedBox(
+                      child: Text(
+                        'Update Profile',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
                       ),
                     ),
                   ),

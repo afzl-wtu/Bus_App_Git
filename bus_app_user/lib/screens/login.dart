@@ -97,31 +97,11 @@ class _LoginState extends State<Login> {
                 // ),
                 SizedBox(height: 20),
                 ListTile(
-                  // tileColor: Colors.teal,
-                  title: FittedBox(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(
-                            value: checkBoxValue,
-                            activeColor: Colors.blue,
-                            onChanged: (bool newValue) {
-                              setState(() {
-                                checkBoxValue = newValue;
-                              });
-                            }),
-                        Text(
-                          'Remember Me',
-                          style: TextStyle(
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ],
+                  trailing: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Forgotten Password?',
                     ),
-                  ),
-                  trailing: Text(
-                    'Forgotten Password?',
-                    style: TextStyle(color: Colors.black54),
                   ),
                 ),
                 Padding(
