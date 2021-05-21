@@ -167,7 +167,7 @@ class _ProfileSCreenState extends State<ProfileSCreen> {
                         horizontal: 60, vertical: 10),
                     child: FittedBox(
                       child: Text(
-                        'Update Profile',
+                        'UPDATE PROFILE',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
