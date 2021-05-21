@@ -190,7 +190,7 @@ class _ContactPassengerState extends State<ContactPassenger> {
                             width: 20,
                             child: CircularProgressIndicator())
                         : Text(
-                            'Pay ${_totalAmount} with Card',
+                            'Pay $_totalAmount with Card',
                             style: TextStyle(
                               color: Colors.white,
                               // fontSize: 22,

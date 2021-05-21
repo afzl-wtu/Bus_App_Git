@@ -148,7 +148,7 @@ class _PaymentState extends State<Payment> {
                         horizontal: 100, vertical: 10),
                     child: FittedBox(
                       child: Text(
-                        'Next',
+                        'NEXT',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
